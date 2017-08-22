@@ -12,6 +12,7 @@ RUN apk update \
     libstdc++ \
     python3 \
     freetype \
+    lapack-dev \
 && apk add --virtual=build_dependencies \
     cmake \
     gcc \
@@ -36,8 +37,9 @@ RUN apk update \
     plotly \
     requests \
     sympy \
-    #scikit-learn \
-    #scipy \
+    scipy \
+    seaborn \
+    scikit-learn \
 && jupyter nbextension enable --py widgetsnbextension \
 && apk del --purge -r build_dependencies \
 && rm -rf /var/cache/apk/* \
