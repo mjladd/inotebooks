@@ -11,6 +11,7 @@ help:
 	@echo "  deps          initialize the ansible environment"
 	@echo "  clean         remove the ansible environment"
 	@echo "  lint          run lint checks against playbooks"
+	@echo "  notebook      run docker container with jupyter notebook"
 	@echo " "
 
 default: help
@@ -26,6 +27,9 @@ $(ENV):
 
 clean:
 	rm -rf $(ENV)
+
+notebook:
+	docker run -d -p 8888:8888 -v $(PWD)/notebooks:/notebooks mladd/fastai:v1
 
 
 env-info:

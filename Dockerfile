@@ -51,6 +51,7 @@ RUN pip3 --no-cache-dir install \
     bokeh \
     vincent \
     beautifulsoup4 \
+    keras \
 && python3 -m ipykernel.kernelspec
 
 # Install TensorFlow CPU version from central repo
@@ -67,15 +68,3 @@ EXPOSE 6006
 # IPython
 EXPOSE 8888
 
-# Set up our notebook config.
-#COPY jupyter_notebook_config.py /root/.jupyter/
-
-# Copy sample notebooks.
-#COPY notebooks /notebooks
-
-# Jupyter has issues with being run directly:
-#   https://github.com/ipython/ipython/issues/7062
-# We just add a little wrapper script.
-#COPY run_jupyter.sh /
-# WORKDIR "/notebooks"
-# CMD ["/run_jupyter.sh", "--allow-root"]

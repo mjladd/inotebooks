@@ -51,6 +51,7 @@ RUN pip3 --no-cache-dir install \
     bokeh \
     vincent \
     beautifulsoup4 \
+    keras \
 && python3 -m ipykernel.kernelspec
 
 # Install TensorFlow CPU version from central repo
