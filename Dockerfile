@@ -56,7 +56,6 @@ RUN pip3 --no-cache-dir install \
 
 # Install TensorFlow CPU version from central repo
 RUN pip3 install tensorflow
-# --- ~ DO NOT EDIT OR DELETE BETWEEN THE LINES --- #
 
 RUN python3 -m pip --no-cache-dir install google-api-python-client
 
