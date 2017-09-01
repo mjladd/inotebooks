@@ -52,6 +52,9 @@ RUN pip3 --no-cache-dir install \
     vincent \
     beautifulsoup4 \
     keras \
+    scikit-image \
+    statsmodels \
+    xlrd \
 && python3 -m ipykernel.kernelspec
 
 # Install TensorFlow CPU version from central repo

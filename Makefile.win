@@ -1,7 +1,6 @@
-PYTHON := $(shell which python3)
-ENV := $(CURDIR)/env
-PIP := $(ENV)/bin/pip3
-PRINTF := $(shell which printf)
+PYTHON := 'C:\\Python36\python.exe'
+ENV := $(CURDIR)/wenv
+PIP := $(ENV)/bin/pip
 
 
 help:
@@ -20,19 +19,17 @@ default: help
 deps: $(ENV)
 	$(PIP) install --upgrade -r requirements.txt
 
+
 $(ENV):
 	virtualenv --python=$(PYTHON) $(ENV)
 	$(PIP) install -U pip setuptools
 
+
 clean:
 	rm -rf $(ENV)
 
-
 notebook:
-	docker run -d -p 8888:8888 -v $(PWD)/notebooks:/notebooks mladd/fastai:v2
+	docker run -d -p 8888:8888 -v $(PWD)/notebooks:/notebooks mladd/fastai:v1
 
 
-env-info:
-	./bin/env-info
-
-.PHONY: clean deps env-info
+.PHONY: clean deps 
