@@ -34,6 +34,7 @@ pickleshare
 prompt-toolkit
 ptyprocess
 Pygments
+pylint
 pyparsing
 python-dateutil
 pytz

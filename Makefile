@@ -8,8 +8,8 @@ help:
 	@echo ""
 	@echo " "
 	@echo "Please use 'make <target> [<target>]...' where <target> is one of"
-	@echo "  deps          initialize the ansible environment"
-	@echo "  clean         remove the ansible environment"
+	@echo "  deps          initialize the environment"
+	@echo "  clean         remove the environment"
 	@echo "  notebook      run docker container with jupyter notebook"
 	@echo " "
 
@@ -22,8 +22,10 @@ deps: $(ENV)
 	$(PIP) install --upgrade -r requirements.txt
 
 $(ENV):
-	virtualenv --python=$(PYTHON) $(ENV)
+	$(PYTHON) -m venv env
 	$(PIP) install -U pip setuptools
+	$(PIP) --upgrade -r requirements.txt
+
 
 clean:
 	rm -rf $(ENV)
