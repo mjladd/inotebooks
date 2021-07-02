@@ -39,6 +39,7 @@ RUN pip3 --no-cache-dir install \
     sklearn \
     cufflinks \
     ipywidgets \
+    nbterm \
     networkx \
     notebook \
     plotly \
