@@ -22,7 +22,6 @@ matplotlib
 mistune
 mpmath
 nbconvert
-nbdime
 nbformat
 nbstripout
 notebook
