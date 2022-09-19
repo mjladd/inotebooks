@@ -10,7 +10,7 @@ deps: $(ENV)
 $(ENV):
 	$(PYTHON) -m venv env
 	$(PIP) install -U pip setuptools
-	$(PIP) --upgrade -r requirements.txt
+	$(PIP) -r requirements.txt
 .PHONY: deps
 
 #> build: build the docker container
@@ -25,7 +25,7 @@ clean:
 
 #> notebook: run jupyter as a containerized notebook
 notebook:
-	docker run -d -p 8888:8888 -v $(PWD)/notebooks:/notebooks mjladd/ml
+	docker run  -p 8888:8888 -v $(PWD)/notebooks:/notebooks mjladd/ml
 .PHONY: clean
 
 .DEFAULT_GOAL = help
