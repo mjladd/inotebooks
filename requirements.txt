@@ -22,6 +22,7 @@ matplotlib
 mistune
 mpmath
 nbconvert
+nbdime
 nbformat
 notebook
 numpy

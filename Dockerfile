@@ -40,6 +40,7 @@ RUN pip3 --no-cache-dir install \
     cufflinks \
     ipywidgets \
     nbterm \
+    nbdime \
     networkx \
     notebook \
     plotly \
