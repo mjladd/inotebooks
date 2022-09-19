@@ -2,7 +2,7 @@
 # https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/docker/Dockerfile
 
 
-FROM ubuntu:20.04
+FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -60,16 +60,12 @@ RUN pip3 --no-cache-dir install \
     xlrd \
 && python3 -m ipykernel.kernelspec
 
-# Install TensorFlow CPU version from central repo
-RUN pip3 install tensorflow
 
 RUN python3 -m pip --no-cache-dir install google-api-python-client
 
 VOLUME /notebooks
 ENTRYPOINT /usr/local/bin/jupyter-notebook --no-browser --ip=0.0.0.0 --notebook-dir=/notebooks --allow-root  --NotebookApp.token=''
 
-# TensorBoard
-EXPOSE 6006
 # IPython
 EXPOSE 8888
 

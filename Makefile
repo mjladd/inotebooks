@@ -3,21 +3,7 @@ ENV := $(CURDIR)/env
 PIP := $(ENV)/bin/pip3
 PRINTF := $(shell which printf)
 
-
-help:
-	@echo ""
-	@echo " "
-	@echo "Please use 'make <target> [<target>]...' where <target> is one of"
-	@echo "  deps          initialize the environment"
-	@echo "  clean         remove the environment"
-	@echo "  notebook      run docker container with jupyter notebook"
-	@echo " "
-
-default: help
-
-build:
-	docker build . -t mjladd/ml
-
+#> deps: build deps to setup virtualenv
 deps: $(ENV)
 	$(PIP) install --upgrade -r requirements.txt
 
@@ -25,14 +11,32 @@ $(ENV):
 	$(PYTHON) -m venv env
 	$(PIP) install -U pip setuptools
 	$(PIP) --upgrade -r requirements.txt
+.PHONY: deps
 
+#> build: build the docker container
+build:
+	docker build . -t mjladd/ml
+.PHONY: build
 
+#> clean: clean up the virtualenv
 clean:
 	rm -rf $(ENV)
+.PHONY: clean
 
-
+#> notebook: run jupyter as a containerized notebook
 notebook:
 	docker run -d -p 8888:8888 -v $(PWD)/notebooks:/notebooks mjladd/ml
+.PHONY: clean
 
+.DEFAULT_GOAL = help
 
-.PHONY: clean deps build
+help:
+	@echo ""
+	@echo " "
+	@echo "🤖 I can help!"
+	@echo " "
+	@echo "Please use 'make <target> [<target>]...' where <target> is one of"
+	@echo " "
+	@sed -n 's/^#>/ /p' $(MAKEFILE_LIST)
+	@echo " "
+.PHONY: help
